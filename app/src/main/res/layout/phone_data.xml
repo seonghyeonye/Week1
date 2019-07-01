@@ -14,14 +14,18 @@
                 android:text="kim"
                 android:textSize="32dp"
                 android:layout_width="130dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/glass"
+                />
             <TextView
                 android:id="@+id/phonenumbers"
                 android:textSize="32dp"
                 android:text='010-2220-3222'
                 android:gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/glass"
+                />
         </TableRow>
     </TableLayout>
 </LinearLayout>
