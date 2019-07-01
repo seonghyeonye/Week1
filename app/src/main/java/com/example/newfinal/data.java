@@ -26,10 +26,10 @@ public class data {
         }
         return newJSON;
     }
-    public static String menulist[]= {"meat","pizza","ramen","rice","sushi","hamburger"};
+public static String menulist[]= {"삼겹살","pizza","ramen","rice","sushi","hamburger","pasta","돈까스","chicken","파전"};
 
-    public static ArrayList<String> menu= new ArrayList<String>(Arrays.asList("meat","pizza","ramen","rice","sushi","hamburger"));
-    public static ArrayList<Integer> myList = new ArrayList<Integer>(Arrays.asList(R.drawable.meat,R.drawable.pizza,R.drawable.ramen,R.drawable.rice,R.drawable.sushi,R.drawable.hamburger));
-    public static int[] imgs ={R.drawable.meat, R.drawable.pizza,R.drawable.ramen,R.drawable.rice,R.drawable.sushi,R.drawable.hamburger};
-    public static boolean[] checkedItems = {true,true,true,true,true,true};
+    public static ArrayList<String> menu= new ArrayList<String>(Arrays.asList("삼겹살","pizza","ramen","rice","sushi","hamburger","pasta","돈까스","chicken","파전"));
+    public static ArrayList<Integer> myList = new ArrayList<Integer>(Arrays.asList(R.drawable.meat,R.drawable.pizza,R.drawable.ramen,R.drawable.rice,R.drawable.sushi,R.drawable.hamburger,R.drawable.pasta,R.drawable.pork,R.drawable.chicken,R.drawable.pajeon));
+    public static int[] imgs ={R.drawable.meat, R.drawable.pizza,R.drawable.ramen,R.drawable.rice,R.drawable.sushi,R.drawable.hamburger,R.drawable.pasta,R.drawable.pork,R.drawable.chicken,R.drawable.pajeon};
+    public static boolean[] checkedItems = {true,true,true,true,true,true,true,true,true,true};
 }
