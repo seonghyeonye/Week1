@@ -1,10 +1,12 @@
 package com.example.newfinal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.media.Image;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -41,6 +43,8 @@ public class ImageAdapter extends BaseAdapter {
         return imageView;
 
     }
+
+
 
     @Override
     public boolean hasStableIds() {
@@ -107,10 +111,9 @@ public class ImageAdapter extends BaseAdapter {
         super.setAutofillOptions(options);
     }
 
-    public ImageAdapter() {
-        super();
-    }
+
+
+
 
 
 }
-

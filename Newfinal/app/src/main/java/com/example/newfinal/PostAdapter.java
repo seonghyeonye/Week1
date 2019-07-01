@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Gravity;;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,12 +55,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
                             .setIcon(android.R.drawable.ic_menu_save)
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
+                                    Toast.makeText(mContext.getApplicationContext(),"연락처가 삭제되었습니다",Toast.LENGTH_SHORT).show();
                                     newjarray.remove(position);
                                     data.newJSON=newjarray;
                                     notifyDataSetChanged();
                                     notifyItemRemoved(position);
-                                    System.out.println(data.newJSON);
-
                                 }})
                             .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {

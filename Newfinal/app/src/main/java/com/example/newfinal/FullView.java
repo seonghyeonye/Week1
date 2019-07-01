@@ -21,5 +21,6 @@ public class FullView extends AppCompatActivity {
 
 
     public void setContentView(int frag2_image_fullview) {
+
     }
 }

@@ -1,6 +1,7 @@
 package com.example.newfinal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -8,7 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,17 +19,18 @@ import java.util.Arrays;
 public class Fragment2 extends Fragment {
 
     ArrayList<Integer> mImageIds = new ArrayList<>(Arrays.asList(
-            R.drawable.img1,R.drawable.img2, R.drawable.img3, R.drawable.img4,
-            R.drawable.img5, R.drawable.img6, R.drawable.img7, R.drawable.img8,
-            R.drawable.img9, R.drawable.img10, R.drawable.img11, R.drawable.img12,
-            R.drawable.img13, R.drawable.img14, R.drawable.img15, R.drawable.img16,
-            R.drawable.img17, R.drawable.img18, R.drawable.img19, R.drawable.img20
+            R.mipmap.img1,R.mipmap.img2, R.mipmap.img3, R.mipmap.img4,
+            R.mipmap.img5, R.mipmap.img6, R.mipmap.img7, R.mipmap.img8,
+            R.mipmap.img9, R.mipmap.img10, R.mipmap.img11, R.mipmap.img12,
+            R.mipmap.img13, R.mipmap.img14, R.mipmap.img15, R.mipmap.img16,
+            R.mipmap.img17, R.mipmap.img18, R.mipmap.img19, R.mipmap.img20
     ));
 
     Context context;
     OnTabItemSelectedListener listener;
 
     GridView grid;
+    ImageView click;
 
     @Override
     public void onAttach(Context context) {
@@ -69,6 +73,23 @@ public class Fragment2 extends Fragment {
         Context mContext = getContext();
         grid = rootView.findViewById(R.id.myGrid);
         grid.setAdapter(new ImageAdapter(mImageIds, mContext));
+
+        /*click = rootView.findViewById(R.id.myGrid);
+
+        ImageAdapter customAdapter = new ImageAdapter(mImageIds, mContext);
+        click.setAdapter(customAdapter);
+
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), ImageAdapter.class);
+                intent.putExtra("image", mImageIds);
+                startActivity(intent);
+            }
+        });*/
+
+
+
 
     }
 

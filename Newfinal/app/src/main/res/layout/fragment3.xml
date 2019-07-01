@@ -15,7 +15,7 @@
             android:id="@+id/image_food"
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:layout_marginLeft="75dp"
+            android:layout_marginLeft="55dp"
             android:layout_marginTop="100dp"
             android:contentDescription="StringValue" />
     </RelativeLayout>
@@ -24,11 +24,22 @@
         android:id="@+id/main_button"
         android:layout_width="237dp"
         android:layout_height="201dp"
-        android:layout_marginLeft="80dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/round_button"
-        android:text="Today's \n food"
+        android:text="Click to Start"
         android:textSize="50dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit"
+        android:layout_marginLeft="235dp"
+        android:layout_marginTop="20dp"
+        android:text="Edit"
+        android:textSize="20dp"
+        android:background="#E6D797"/>
+
 
     <RelativeLayout
         android:id="@+id/bottomLayout"

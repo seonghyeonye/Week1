@@ -1,6 +1,8 @@
 package com.example.newfinal;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -14,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -24,7 +28,10 @@ public class Fragment3 extends Fragment {
     ImageView imageViewFood;
     Button selectbutton;
     ImageView selectbutton2;
+    Button editbutton;
     Random rng = new Random();
+    ArrayList<String> mSelectedItems= data.menu;
+    ArrayList<Integer> selectedimage= data.myList;
 
     @Override
     public void onAttach(Context context) {
@@ -55,19 +62,20 @@ public class Fragment3 extends Fragment {
         return rootView;
     }
 
+
     private void initUI(final ViewGroup rootView) {
         imageViewFood = rootView.findViewById(R.id.image_food);
-        selectbutton=rootView.findViewById(R.id.main_button);
+        selectbutton = rootView.findViewById(R.id.main_button);
         //imageViewFood.setOnClickListener(new View.OnClickListener(){
-        selectbutton.setOnClickListener(new View.OnClickListener(){
+        selectbutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View V){
+            public void onClick(View V) {
                 selectbutton.setVisibility(View.GONE);
-                selectbutton2=rootView.findViewById(R.id.retry);
+                selectbutton2 = rootView.findViewById(R.id.retry);
                 imageViewFood.setImageResource(R.drawable.retry);
-                selectbutton2.setOnClickListener(new View.OnClickListener(){
+                selectbutton2.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View V){
+                    public void onClick(View V) {
                         rollDice(rootView);
                     }
                 });
@@ -75,44 +83,37 @@ public class Fragment3 extends Fragment {
             }
 
         });
+
+        editbutton = rootView.findViewById(R.id.edit);
+        editbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View V) {
+                final String menulist[] = data.menulist;
+                final int imglist[] = data.imgs;
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+                dialogBuilder.setTitle("Select Food List");
+                dialogBuilder.setMultiChoiceItems(menulist, data.checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which, boolean isChecked) {
+                                System.out.println(which);
+                                if (isChecked) {
+                                    System.out.println();
+                                    mSelectedItems.add(menulist[which]);
+                                    selectedimage.add(data.imgs[which]);
+                                } else if (mSelectedItems.contains(menulist[which])) {
+                                    mSelectedItems.remove(mSelectedItems.indexOf(menulist[which]));
+                                    selectedimage.remove(selectedimage.indexOf(imglist[which]));
+                                }
+                            }
+                        }
+                );
+                dialogBuilder.setPositiveButton("Done", null);
+                AlertDialog dialog =dialogBuilder.create();
+                dialog.show();
+            }
+        });
     }
 
-    private void rollDice(final ViewGroup rootView){
-        int randomNumber=rng.nextInt(6)+1;
-
-        switch(randomNumber){
-            case 1:
-                Toast meat= Toast.makeText(context.getApplicationContext(),"Today is meat!",Toast.LENGTH_SHORT);
-                display(meat);
-                imageViewFood.setImageResource(R.drawable.meat);
-                break;
-            case 2:
-                Toast pizza= Toast.makeText(context.getApplicationContext(),"Today is pizza!",Toast.LENGTH_SHORT);
-                display(pizza);
-                imageViewFood.setImageResource(R.drawable.pizza);
-                break;
-            case 3:
-                Toast ramen= Toast.makeText(context.getApplicationContext(),"Today is ramen!",Toast.LENGTH_SHORT);
-                display(ramen);
-                imageViewFood.setImageResource(R.drawable.ramen);
-                break;
-            case 4:
-                Toast rice= Toast.makeText(context.getApplicationContext(),"Today is rice!",Toast.LENGTH_SHORT);
-                display(rice);
-                imageViewFood.setImageResource(R.drawable.rice);
-                break;
-            case 5:
-                Toast sushi= Toast.makeText(context.getApplicationContext(),"Today is sushi!",Toast.LENGTH_SHORT);
-                display(sushi);
-                imageViewFood.setImageResource(R.drawable.sushi);
-                break;
-            case 6:
-                Toast hamburger= Toast.makeText(context.getApplicationContext(),"Today is hamburger!",Toast.LENGTH_SHORT);
-                display(hamburger);
-                imageViewFood.setImageResource(R.drawable.hamburger);
-                break;
-        }
-    }
     private void display(Toast toast){
         toast.setGravity(Gravity.CENTER,0,80);
         ViewGroup view = (ViewGroup) toast.getView();
@@ -120,5 +121,14 @@ public class Fragment3 extends Fragment {
         TextView messageText = (TextView) view.getChildAt(0);
         messageText.setTextSize(35);
         toast.show();
+    }
+
+    private void rollDice(ViewGroup rootView) {
+        int randomNumber = rng.nextInt(mSelectedItems.size())+1;
+        Toast menu = Toast.makeText(context.getApplicationContext(), "Today is " + mSelectedItems.get(randomNumber-1) + "!", Toast.LENGTH_SHORT);
+        display(menu);
+        imageViewFood.setImageResource(selectedimage.get(randomNumber-1));
+        System.out.println(randomNumber);
+        //imageViewFood.setImageResource(data.imgs[randomNumber-1]);}
     }
 }
