@@ -1,119 +1,50 @@
 package com.example.newfinal;
 
 import android.content.Context;
-import android.content.Intent;
-import android.database.DataSetObserver;
-import android.media.Image;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import java.util.List;
+public class ImageAdapter extends BaseAdapter{
 
-public class ImageAdapter extends BaseAdapter {
+    private Context context;
 
-    private List<Integer> mThumbIds;
-    private Context mContext;
+    public Integer[] images = {
+            R.mipmap.img1,R.mipmap.img2, R.mipmap.img3, R.mipmap.img4,
+            R.mipmap.img5, R.mipmap.img6, R.mipmap.img7, R.mipmap.img8,
+            R.mipmap.img9, R.mipmap.img10, R.mipmap.img11, R.mipmap.img12,
+            R.mipmap.img13, R.mipmap.img14, R.mipmap.img15, R.mipmap.img16,
+            R.mipmap.img17, R.mipmap.img18, R.mipmap.img19, R.mipmap.img20
+    };
 
-    public ImageAdapter(List<Integer> mThumbIds, Context mContext) {
-        this.mThumbIds = mThumbIds;
-        this.mContext = mContext;
+    public ImageAdapter(Context c){
+        context = c;
     }
 
+    @Override
     public int getCount() {
-        return mThumbIds.size();
+        return images.length;
     }
 
-    public Object getItem(int position) { return null;}
-    public long getItemId(int position) { return mThumbIds.get(position);}
+    @Override
+    public Object getItem(int position) {
+        return images[position];
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView = (ImageView) convertView;
 
-        if(imageView == null){
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(350, 450));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        }
-
-        imageView.setImageResource(mThumbIds.get(position));
-
+        ImageView imageView = new ImageView(context);
+        imageView.setImageResource(images[position]);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setLayoutParams(new GridView.LayoutParams(350, 450));
         return imageView;
-
     }
-
-
-
-    @Override
-    public boolean hasStableIds() {
-        return super.hasStableIds();
-    }
-
-    @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
-        super.registerDataSetObserver(observer);
-    }
-
-    @Override
-    public void unregisterDataSetObserver(DataSetObserver observer) {
-        super.unregisterDataSetObserver(observer);
-    }
-
-    @Override
-    public void notifyDataSetChanged() {
-        super.notifyDataSetChanged();
-    }
-
-    @Override
-    public void notifyDataSetInvalidated() {
-        super.notifyDataSetInvalidated();
-    }
-
-    @Override
-    public boolean areAllItemsEnabled() {
-        return super.areAllItemsEnabled();
-    }
-
-    @Override
-    public boolean isEnabled(int position) {
-        return super.isEnabled(position);
-    }
-
-    @Override
-    public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        return super.getDropDownView(position, convertView, parent);
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return super.getItemViewType(position);
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return super.getViewTypeCount();
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return super.isEmpty();
-    }
-
-    @Override
-    public CharSequence[] getAutofillOptions() {
-        return super.getAutofillOptions();
-    }
-
-    @Override
-    public void setAutofillOptions(CharSequence... options) {
-        super.setAutofillOptions(options);
-    }
-
-
-
-
-
-
 }
